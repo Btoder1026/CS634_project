@@ -13,7 +13,7 @@
 
 
 # you can use the Docker view to manage your Docker containers, images, and volumes directly from within VS Code.
-![image](https://github.com/Btoder1026/CS634_project/assets/131170660/183184b4-5017-415d-9868-aba4641d0410)
+![image](https://github.com/Btoder1026/CS634_project/assets/131170660/05fb65ad-50cb-4c8d-94e8-058294940cf3)
 
 
 # Open a terminal and run docker version command to check if Docker is connected
