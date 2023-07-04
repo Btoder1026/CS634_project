@@ -4,7 +4,7 @@ Ask a home buyer to describe their dream house, and they probably won’t begin 
 
 
 Milestone 2: (Week 3, 40 points)
-Download the dataset from 
+Download the dataset from
 https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview
 
 Read the excellent summary on SHAP that Google engineers have put together. Watch the video and read the blog posts here to understand the problem and its solution provided by Tree SHAP. The blog post discusses the XGBoost implementation of gradient boosting but the concept is the same.
