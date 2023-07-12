@@ -2,18 +2,17 @@
 
 Ask a home buyer to describe their dream house, and they probably won’t begin with the height of the basement ceiling or the proximity to an east-west railroad. But this playground competition’s dataset proves that much more influences price negotiations than the number of bedrooms or a white-picket fence. With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.
 
+# Milestone 3: (Week 4, 30 points)
+Merge the earlier branch into the main branch and create a new branch titled ‘milestone-3. Do not delete the milestone-2 branch.
 
-Milestone 2: 
+Repeat the analysis in Milestone 2 but this time use this or this guide to tune with Optuna the hyperparameters of the LightGBM model.
 
-Download the dataset from
+You need to creating a streamlit app for the house price prediction problem. Streamlit is a python library that allows you to create web apps with minimal coding and deploy them in the cloud. Deploy the streamlit app in HuggingFace streamlit spaces after you create a free account. The app must resemble this UI (please avoid the shown gif image) and in addition it must show a SHAP summary plot and a SHAP interaction plot.
 
-https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview
+Submit the github repository URL with a branch titled ‘milestone-3’ with the README.md file containing the link to the deployed HF space where the Milestone 2 calculation and the optimized app calculation price prediction can both be seen.
 
-Read the excellent summary on SHAP that Google engineers have put together. Watch the video and read the blog posts here to understand the problem and its solution provided by Tree SHAP. The blog post discusses the XGBoost implementation of gradient boosting but the concept is the same.
-
-Perform the SHAP interpretation of the house price prediction model of your choice. At a minimum you should produce graphs that show the SHAP values for the features and the SHAP interaction values for these features.
-
-
+# Deploy the streamlit app in HuggingFace
+https://huggingface.co/spaces/pichen/house-price-prediction
 
 
 
