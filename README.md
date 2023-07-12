@@ -12,7 +12,7 @@ You need to creating a streamlit app for the house price prediction problem. Str
 Submit the github repository URL with a branch titled ‘milestone-3’ with the README.md file containing the link to the deployed HF space where the Milestone 2 calculation and the optimized app calculation price prediction can both be seen.
 
 # streamlit app
-http://localhost:8501
+https://huggingface.co/spaces/pichen/house-price-prediction
 
 
 
