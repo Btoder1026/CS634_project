@@ -18,5 +18,10 @@ Submit the github repository URL with a branch titled ‘milestone-1’ with the
 # Download docker in Desktop
 <img width="1426" alt="Screenshot 2023-07-12 at 11 12 37 AM" src="https://github.com/Btoder1026/CS634_project/assets/131170660/56630fe7-086a-46aa-9c25-c1d16d3e3445">
 
+# In VSCode create a Dockerfile and run the Docker image and the Docker container show running
+<img width="1269" alt="Screenshot 2023-07-12 at 11 18 34 AM" src="https://github.com/Btoder1026/CS634_project/assets/131170660/021e0048-8a17-4e5f-98c7-e82c9f1eee32">
+
+
+
 
 
