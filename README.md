@@ -12,8 +12,11 @@ Independent of your OS, you may want to use VS Code IDE if you have no IDE exper
 
 Submit the github repository URL with a branch titled ‘milestone-1’ with the README.md file containing the installation instructions you followed and a screenshot of your docker container terminal prompt. Add as collaborator the TA.
 
-# Search Docker in Extensions button and install DOCKER 
+# In VSCode search Docker in the Extensions button and install Docker
 <img width="1259" alt="Screenshot 2023-07-12 at 11 08 03 AM" src="https://github.com/Btoder1026/CS634_project/assets/131170660/e8197ccd-d1c1-4995-a938-54636615b45c">
+
+# Download docker in Desktop
+<img width="1426" alt="Screenshot 2023-07-12 at 11 12 37 AM" src="https://github.com/Btoder1026/CS634_project/assets/131170660/56630fe7-086a-46aa-9c25-c1d16d3e3445">
 
 
 
