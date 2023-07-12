@@ -1,25 +1,17 @@
-# Docker Environment Setup in Visual Studio Code
+# Interpretable Gradient Boosting - Real Estate House Price Prediction
 
-# Installation Steps:
-
-1. Launch Visual Studio Code on your machine.
-
-2. Open the Extensions view by clicking on the square icon in the left sidebar and Search for "Docker"
-
-3. Look for the "Docker" extension by Microsoft and click on the "Install" button to install the extension.
+Ask a home buyer to describe their dream house, and they probably won’t begin with the height of the basement ceiling or the proximity to an east-west railroad. But this playground competition’s dataset proves that much more influences price negotiations than the number of bedrooms or a white-picket fence. With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.
 
 
-<img width="1216" alt="Screenshot 2023-06-09 at 4 03 01 PM" src="https://github.com/Btoder1026/CS634_project/assets/131170660/0ea32100-63e8-42b6-8bda-aac128a261d9">
+Milestone 2: 
 
+Download the dataset from
 
-# you can use the Docker view to manage your Docker containers, images, and volumes directly from within VS Code.
-![image](https://github.com/Btoder1026/CS634_project/assets/131170660/05fb65ad-50cb-4c8d-94e8-058294940cf3)
+https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview
 
+Read the excellent summary on SHAP that Google engineers have put together. Watch the video and read the blog posts here to understand the problem and its solution provided by Tree SHAP. The blog post discusses the XGBoost implementation of gradient boosting but the concept is the same.
 
-# Open a terminal and run docker version command to check if Docker is connected
-![image](https://github.com/Btoder1026/CS634_project/assets/131170660/29cbd9e5-552e-407d-9a10-a92f47919e48)
-
-
+Perform the SHAP interpretation of the house price prediction model of your choice. At a minimum you should produce graphs that show the SHAP values for the features and the SHAP interaction values for these features.
 
 
 
