@@ -21,7 +21,7 @@ Submit the github repository URL with a branch titled ‘milestone-1’ with the
 # In VSCode create a Dockerfile 
 <img width="1130" alt="Screenshot 2023-07-12 at 11 20 53 AM" src="https://github.com/Btoder1026/CS634_project/assets/131170660/c1ae5cb6-a9ad-413c-8c2c-30438e6722f0">
 
-# Bulid the Docker image and the Docker container will show running
+# Bulid the Docker image and run the Docker container
 <img width="1269" alt="Screenshot 2023-07-12 at 11 18 34 AM" src="https://github.com/Btoder1026/CS634_project/assets/131170660/021e0048-8a17-4e5f-98c7-e82c9f1eee32">
 
 # Milestone 2: (Week 3, 40 points)
