@@ -54,7 +54,6 @@ Use google sites to create a landing page for your app (5 points)
 
 Create a video that will demonstrate the app. The video should be no longer than 5 minutes and should be either uploaded to your youtube channel or inlcuded in the github repository as an mp4 (5 points).
 
-https://www.youtube.com/watch?v=EF6fqnnl3Uk
 
 
 
