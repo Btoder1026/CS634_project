@@ -25,7 +25,8 @@ Submit the github repository URL with a branch titled ‘milestone-1’ with the
 <img width="1269" alt="Screenshot 2023-07-12 at 11 18 34 AM" src="https://github.com/Btoder1026/CS634_project/assets/131170660/021e0048-8a17-4e5f-98c7-e82c9f1eee32">
 
 # Milestone 2: (Week 3, 40 points)
-Download the dataset from https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview
+Download the dataset from 
+https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview
 Read the excellent summary on SHAP that Google engineers have put together. Watch the video and read the blog posts here to understand the problem and its solution provided by Tree SHAP. The blog post discusses the XGBoost implementation of gradient boosting but the concept is the same.
 
 Perform the SHAP interpretation of the house price prediction model of your choice. At a minimum you should produce graphs that show the SHAP values for the features and the SHAP interaction values for these features.
