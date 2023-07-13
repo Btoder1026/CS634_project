@@ -1,0 +1,64 @@
+# Install the optuna package using pip
+pip install optuna
+
+import pandas as pd
+import numpy as np
+import optuna
+import lightgbm as lgb
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+
+# Loading the dataset
+train_dataset = pd.read_csv('train.csv')
+train_dataset.head()
+
+
+# Selecting features
+features = ['LotArea', 'OverallQual', 'OverallCond', 'YearBuilt', 'YearRemodAdd', 'BsmtFinSF1', 'BsmtFinSF2',
+            'TotalBsmtSF', '1stFlrSF', 'LowQualFinSF', 'GrLivArea', 'BsmtFullBath', 'BsmtHalfBath', 'HalfBath',
+            'BedroomAbvGr', 'Fireplaces', 'GarageCars', 'GarageArea', 'WoodDeckSF', 'OpenPorchSF', 'EnclosedPorch',
+            'PoolArea', 'YrSold']
+X = train_dataset[features]
+y = train_dataset["SalePrice"]
+
+
+# Splitting the dataset into train and validation sets
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# LightGBM objective function for Optuna
+def objective(trial):
+    params = {
+        'objective': 'regression',
+        'metric': 'rmse',
+        'verbosity': -1,
+        'boosting_type': 'gbdt',
+        'lambda_l1': trial.suggest_loguniform('lambda_l1', 1e-8, 10.0),
+        'lambda_l2': trial.suggest_loguniform('lambda_l2', 1e-8, 10.0),
+        'num_leaves': trial.suggest_int('num_leaves', 2, 256),
+        'learning_rate': trial.suggest_loguniform('learning_rate', 0.01, 0.5),
+        'feature_fraction': trial.suggest_uniform('feature_fraction', 0.1, 1.0),
+        'bagging_fraction': trial.suggest_uniform('bagging_fraction', 0.1, 1.0),
+        'bagging_freq': trial.suggest_int('bagging_freq', 1, 10),
+        'min_child_samples': trial.suggest_int('min_child_samples', 1, 100)
+    }
+
+    model = lgb.LGBMRegressor(**params)
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_val)
+    rmse = np.sqrt(mean_squared_error(y_val, y_pred))
+
+    return rmse
+
+    
+# Running the hyperparameter optimization
+study = optuna.create_study(direction='minimize')
+study.optimize(objective, n_trials=100)
+
+
+# Getting the best hyperparameters
+best_params = study.best_params
+
+
+# Training the final LightGBM model with the best hyperparameters
+final_model = lgb.LGBMRegressor(**best_params)
+final_model.fit(X, y)
