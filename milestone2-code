@@ -1,0 +1,43 @@
+# Install the shap package using pip
+pip install shap
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestRegressor
+import shap
+
+# Loading the dataset
+train_dataset = pd.read_csv('train.csv')
+test_dataset = pd.read_csv('test.csv')
+train_dataset.head()
+
+# Selecting features
+features = ['LotArea', 'OverallQual', 'OverallCond', 'YearBuilt', 'YearRemodAdd', 'BsmtFinSF1', 'BsmtFinSF2', 'TotalBsmtSF', '1stFlrSF', 'LowQualFinSF', 'GrLivArea', 'BsmtFullBath', 'BsmtHalfBath', 'HalfBath', 'BedroomAbvGr',  'Fireplaces', 'GarageCars', 'GarageArea', 'WoodDeckSF', 'OpenPorchSF', 'EnclosedPorch',  'PoolArea', 'YrSold']
+X_train = train_dataset[features]
+y_train = train_dataset["SalePrice"]
+X_train.head()
+X_test = test_dataset[features]
+
+# Training regression model
+model = RandomForestRegressor()
+model.fit(X_train, y_train)
+
+# Initializing the SHAP explainer object with the trained model and the training data
+explainer = shap.Explainer(model, X_train)
+
+# Calculating the SHAP values for the test data
+shap_values = explainer(X_test)
+
+# Visualizing the SHAP values for the features
+shap.summary_plot(shap_values, X_test, plot_type='bar', show=False)
+plt.title("SHAP Values for Features")
+plt.tight_layout()
+plt.show()
+
+# Visualizing the SHAP interaction values for the features
+shap.summary_plot(shap_values, X_test, show=False)
+plt.title("SHAP Interaction Values")
+plt.tight_layout()
+plt.show()
