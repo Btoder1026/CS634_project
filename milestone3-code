@@ -72,4 +72,5 @@ final_model = lgb.LGBMRegressor(**best_params)
 final_model.fit(X, y)
 # The final LightGBM model is trained using the best hyperparameters obtained from the optimization. The **best_params syntax unpacks the dictionary of best hyperparameters as keyword arguments when initializing the LGBMRegressor. The model is then fitted on the entire dataset (X and y).
 
-The code is well-documented and organized, making it easier to understand the purpose and functionality of each section. The optimization results, including the best hyperparameters, are stored in the best_params variable, which can be further used for model evaluation, prediction, or other tasks.
+
+The optimization results, including the best hyperparameters, are stored in the best_params variable, which can be further used for model evaluation, prediction, or other tasks.
