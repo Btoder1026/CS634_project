@@ -1,0 +1,55 @@
+# Install the shap package using pip:
+pip install shap
+# This command installs the SHAP package, which is a popular Python library for interpreting machine learning models.
+
+# Importing the required libraries:
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestRegressor
+import shap
+# Importing the necessary libraries for data manipulation (pandas), numerical operations (numpy), visualization (matplotlib.pyplot), machine learning model (RandomForestRegressor), and SHAP.
+
+# Loading the dataset
+train_dataset = pd.read_csv('train.csv')
+test_dataset = pd.read_csv('test.csv')
+train_dataset.head()
+# The code reads the training and test datasets from CSV files using pandas' read_csv function. 
+
+# Selecting features
+features = ['LotArea', 'OverallQual', 'OverallCond', 'YearBuilt', 'YearRemodAdd', 'BsmtFinSF1', 'BsmtFinSF2', 'TotalBsmtSF', '1stFlrSF', 'LowQualFinSF', 'GrLivArea', 'BsmtFullBath', 'BsmtHalfBath', 'HalfBath', 'BedroomAbvGr',  'Fireplaces', 'GarageCars', 'GarageArea', 'WoodDeckSF', 'OpenPorchSF', 'EnclosedPorch',  'PoolArea', 'YrSold']
+X_train = train_dataset[features]
+y_train = train_dataset["SalePrice"]
+X_train.head()
+X_test = test_dataset[features]
+# we define a list of feature names that we want to use for training the model. We create the training and testing datasets by selecting only those features from the original datasets.
+
+# Training regression model
+model = RandomForestRegressor()
+model.fit(X_train, y_train)
+# We initialize a random forest regressor model and train it using the training data (X_train and y_train).
+
+# Initializing the SHAP explainer object with the trained model and the training data
+explainer = shap.Explainer(model, X_train)
+# We create an explainer object by passing the trained model (model) and the training data (X_train) to the Explainer class from SHAP. This object will be used to calculate SHAP values.
+
+# Calculating the SHAP values for the test data
+shap_values = explainer(X_test)
+# We use the explainer object to compute SHAP values for the test data (X_test). These values represent the contribution of each feature to the predicted house prices.
+
+# Visualizing the SHAP values for the features
+shap.summary_plot(shap_values, X_test, plot_type='bar', show=False)
+plt.title("SHAP Values for Features")
+plt.tight_layout()
+plt.show()
+# This code generates a summary plot of the SHAP values for each feature using shap.summary_plot(). The plot_type='bar' argument specifies that we want a bar plot. We then set the title, adjust the layout, and finally show the plot using plt.show().
+
+# Visualizing the SHAP interaction values for the features
+shap.summary_plot(shap_values, X_test, show=False)
+plt.title("SHAP Interaction Values")
+plt.tight_layout()
+plt.show()
+# this code generates a summary plot of the SHAP interaction values. The interaction values show how combinations of features affect the predictions. Again, we set the title, adjust the layout, and show the plot.
+
+
+The code provides visual interpretations of the trained model using SHAP values and interaction values. These visualizations help in understanding the feature importance and the relationships between features in the context of the model's predictions.
