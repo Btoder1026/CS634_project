@@ -50,3 +50,6 @@ plt.title("SHAP Interaction Values")
 plt.tight_layout()
 plt.show()
 # this code generates a summary plot of the SHAP interaction values. The interaction values show how combinations of features affect the predictions. Again, we set the title, adjust the layout, and show the plot.
+
+
+The code provides visual interpretations of the trained model using SHAP values and interaction values. These visualizations help in understanding the feature importance and the relationships between features in the context of the model's predictions.
