@@ -1,1 +1,0 @@
-https://sites.google.com/njit.edu/house-price-prediction-pichen/home
