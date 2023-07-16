@@ -58,6 +58,7 @@ Document extensively both the code as well as the results (10 points).
 https://sites.google.com/njit.edu/house-price-prediction-pichen/home
 
 Create a video that will demonstrate the app. The video should be no longer than 5 minutes and should be either uploaded to your youtube channel or inlcuded in the github repository as an mp4 (5 points).
+https://github.com/Btoder1026/CS634_project/assets/131170660/48340426-3214-4fac-8fd6-08277f3226d2
 
 
 
