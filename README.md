@@ -59,6 +59,8 @@ https://sites.google.com/njit.edu/house-price-prediction-pichen/home
 
 Create a video that will demonstrate the app. The video should be no longer than 5 minutes and should be either uploaded to your youtube channel or inlcuded in the github repository as an mp4 (5 points).
 
+https://drive.google.com/file/d/1ylK8vi1CzTHuhjiGmrFNeWjr3-xM8t73/view?usp=sharing
+
 
 
 
