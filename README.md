@@ -1,4 +1,4 @@
-# Milestone 4: Documentation and Video Production (Week 5, 20 points)
+## Milestone 4: Documentation and Video Production (Week 5, 20 points)
 Merge the earlier branch into the main branch and create a new branch titled ‘milestone-4’. Do not delete the milestone-3 branch.
 
 Document extensively both the code as well as the results (10 points).
