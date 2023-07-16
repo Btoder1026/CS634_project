@@ -1,0 +1,76 @@
+# Install the optuna package using pip
+pip install optuna
+
+# Import the necessary libraries.
+import pandas as pd
+import numpy as np
+import optuna
+import lightgbm as lgb
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+# These import statements bring in the required libraries for data manipulation, modeling, and evaluation. pandas and numpy are used for data handling, optuna is used for hyperparameter optimization, lightgbm is the gradient boosting library used for modeling, and train_test_split and mean_squared_error are utility functions from scikit-learn for dataset splitting and evaluation, respectively.
+
+# Loading the dataset
+train_dataset = pd.read_csv('train.csv')
+train_dataset.head()
+# This code reads the 'train.csv' file into a pandas DataFrame named train_dataset and show first 6 rows.
+
+
+# Select the features for modeling and assign the target variable.
+features = ['LotArea', 'OverallQual', 'OverallCond', 'YearBuilt', 'YearRemodAdd', 'BsmtFinSF1', 'BsmtFinSF2',
+            'TotalBsmtSF', '1stFlrSF', 'LowQualFinSF', 'GrLivArea', 'BsmtFullBath', 'BsmtHalfBath', 'HalfBath',
+            'BedroomAbvGr', 'Fireplaces', 'GarageCars', 'GarageArea', 'WoodDeckSF', 'OpenPorchSF', 'EnclosedPorch',
+            'PoolArea', 'YrSold']
+X = train_dataset[features]
+y = train_dataset["SalePrice"]
+# the code selects the relevant features for modeling from the dataset and assigns them to the X variable using pandas indexing. The target variable, "SalePrice", is assigned to the y variable.
+
+
+# Splitting the dataset into train and validation sets
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+# This code uses the train_test_split() function from scikit-learn to split the dataset into training and validation sets. The training set consists of 80% of the data, while the validation set contains the remaining 20%.
+
+# LightGBM objective function for Optuna
+def objective(trial):
+    params = {
+        'objective': 'regression',
+        'metric': 'rmse',
+        'verbosity': -1,
+        'boosting_type': 'gbdt',
+        'lambda_l1': trial.suggest_loguniform('lambda_l1', 1e-8, 10.0),
+        'lambda_l2': trial.suggest_loguniform('lambda_l2', 1e-8, 10.0),
+        'num_leaves': trial.suggest_int('num_leaves', 2, 256),
+        'learning_rate': trial.suggest_loguniform('learning_rate', 0.01, 0.5),
+        'feature_fraction': trial.suggest_uniform('feature_fraction', 0.1, 1.0),
+        'bagging_fraction': trial.suggest_uniform('bagging_fraction', 0.1, 1.0),
+        'bagging_freq': trial.suggest_int('bagging_freq', 1, 10),
+        'min_child_samples': trial.suggest_int('min_child_samples', 1, 100)
+    }
+
+    model = lgb.LGBMRegressor(**params)
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_val)
+    rmse = np.sqrt(mean_squared_error(y_val, y_pred))
+
+    return rmse
+# The objective() function is defined to serve as the objective function for the Optuna optimization process. This function takes a trial object as an argument, which is used to sample hyperparameters for each iteration. Inside the function, a dictionary of hyperparameters for the LightGBM model is defined using the trial object's suggest_ methods. The LightGBM model is trained with the specified hyperparameters, and the root mean squared error (RMSE) is calculated on the validation set.
+
+    
+# Running the hyperparameter optimization
+study = optuna.create_study(direction='minimize')
+study.optimize(objective, n_trials=100)
+# In this step, a study object is created using optuna.create_study() to define the optimization study. The direction parameter is set to 'minimize' since we want to minimize the RMSE. The optimize() method is called on the study object, passing the objective() function as the argument, and the number of trials is set to 100.
+
+
+# Getting the best hyperparameters
+best_params = study.best_params
+# The best hyperparameters found by Optuna are obtained by accessing the best_params attribute of the study object.
+
+
+# Training the final LightGBM model with the best hyperparameters
+final_model = lgb.LGBMRegressor(**best_params)
+final_model.fit(X, y)
+# The final LightGBM model is trained using the best hyperparameters obtained from the optimization. The **best_params syntax unpacks the dictionary of best hyperparameters as keyword arguments when initializing the LGBMRegressor. The model is then fitted on the entire dataset (X and y).
+
+
+The optimization results, including the best hyperparameters, are stored in the best_params variable, which can be further used for model evaluation, prediction, or other tasks.
